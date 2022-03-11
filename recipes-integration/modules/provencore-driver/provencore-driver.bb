@@ -13,7 +13,7 @@ SRCREV = "${AUTOREV}"
 
 S = "${WORKDIR}/git/drivers/provencore"
 
-do_configure_append () {
+do_configure:append () {
     cp -r ${WORKDIR}/git/include/misc ${WORKDIR}/git/drivers/provencore/ree
     cp -r ${WORKDIR}/git/include/misc ${WORKDIR}/git/drivers/provencore/shdev
     mv ${WORKDIR}/git/drivers/provencore/ree/Makefile.in ${WORKDIR}/git/drivers/provencore/ree/Makefile
@@ -24,7 +24,7 @@ EXTRA_OEMAKE += "KERNELDIR=${STAGING_KERNEL_BUILDDIR} M=${S} -C ${STAGING_KERNEL
 EXTRA_OEMAKE += "CONFIG_PROVENCORE_REE=m"
 KERNEL_MODULE_AUTOLOAD += "pnc_ree"
 
-EXTRA_OEMAKE_append_k26 += "CONFIG_PROVENCORE_SHARED_DEVICES=m"
-EXTRA_OEMAKE_append_k26 += "PNC_CONFIG_MK=${WORKDIR}/git/configs/pnc_config_xilinx_drm.mk"
-KERNEL_MODULE_AUTOLOAD_k26 += "pnc_shdev"
+EXTRA_OEMAKE:append:k26-som += "CONFIG_PROVENCORE_SHARED_DEVICES=m"
+EXTRA_OEMAKE:append:k26-som += "PNC_CONFIG_MK=${WORKDIR}/git/configs/pnc_config_xilinx_drm.mk"
+KERNEL_MODULE_AUTOLOAD:k26-som += "pnc_shdev"
 
