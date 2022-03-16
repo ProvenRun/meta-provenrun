@@ -16,7 +16,7 @@ S = "${WORKDIR}"
 
 PACKAGES = "${PN}"
 PROVIDES += "libprovencore"
-RDEPENDS_${PN} = "provencore-driver"
+RDEPENDS:${PN} = "provencore-driver"
 
 do_compile() {
     oe_runmake
@@ -30,5 +30,5 @@ do_install () {
     install -m 0644 ${S}/provencore.h ${D}${includedir}
 }
 
-FILES_${PN} += "${includedir}/*"
-INSANE_SKIP_${PN} += "installed-vs-shipped"
+FILES:${PN} += "${includedir}/*"
+INSANE_SKIP:${PN} += "installed-vs-shipped"
