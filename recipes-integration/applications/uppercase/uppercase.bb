@@ -8,6 +8,7 @@ LIC_FILES_CHKSUM = "file://${COMMON_LICENSE_DIR}/GPL-2.0;md5=801f80980d171dd6425
 
 SRC_URI = "file://uppercase.c \
            file://Makefile \
+           file://README.md \
           "
 
 S = "${WORKDIR}"
