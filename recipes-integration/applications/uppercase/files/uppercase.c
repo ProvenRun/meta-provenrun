@@ -58,7 +58,7 @@ int main(int argc, char **argv)
     error = pnc_session_config_by_name(session, "toupper");
     if (error) {
         print_error(error);
-        return EXIT_FAILURE;
+        goto end;
     }
 
     // Get shared buffer parameters - its address and the size.
@@ -68,24 +68,30 @@ int main(int argc, char **argv)
     error = pnc_session_getinfo(session, (void **)&data, &size);
     if (error) {
         print_error(error);
-        return EXIT_FAILURE;
+        goto end;
     }
 
     // Copy the input string to the shared area
     strcpy(data, word);
 
     // Notify the secure application and wait for the answer:
-    error = pnc_session_request(session, 42, 0);
+    uint32_t response;
+    error = pnc_session_send_request_and_wait_response(session, 42, NO_TIMEOUT, &response);
     if (error) {
         fprintf(stderr, "Could not notify the secure application.\n");
         print_error(error);
-        return EXIT_FAILURE;
+        goto end;
+    }
+    if (response != 0) {
+        fprintf(stderr, "'toupper' returned r=%d.\n", response);
+        goto end;
     }
 
     // Display the result
     printf("'%s'==>'%s'\n", word, data);
 
+end:
     printf("Closing the session...\n");
     pnc_session_destroy(session);
-    return EXIT_SUCCESS;
+    return error ? EXIT_FAILURE : EXIT_SUCCESS;
 }
