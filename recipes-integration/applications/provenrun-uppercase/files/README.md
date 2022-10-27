@@ -5,7 +5,7 @@ uppercase
 
 `pnr-uppercase` is usefull to test communication between Linux and ProvenCore. It makes use of provencore driver.
 
-`pnr-uppercase` application can be executed with a free license.
+`pnr-uppercase` application can be executed with a free license which can be requested here: https://appstore.xilinx.com/products/acceleration-solutions/provenrun_toupper.html
 
 Requirements
 ------------

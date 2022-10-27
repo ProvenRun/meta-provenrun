@@ -24,10 +24,11 @@
 
 
 #define DRM_LICENSING_ERROR_MSG \
-"******************************** WARNING *************************************\n\
-* DRM licensing issue: secured application might not be able to operate       *\n\
-* normally.                                                                   *\n\
-*******************************************************************************\n\n"
+"******************************** WARNING ********************************************\n\
+* DRM licensing issue: secure application might not be able to operate normally.     *\n\
+* To get a valid license please have a look at:                                      *\n\
+* https://appstore.xilinx.com/products/acceleration-solutions/provenrun_toupper.html *\n\
+**************************************************************************************\n\n"
 
 void print_error(int error)
 {
