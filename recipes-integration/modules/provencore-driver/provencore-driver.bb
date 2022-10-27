@@ -10,6 +10,7 @@ inherit module
 
 SRC_URI = "git://github.com/ProvenRun/provencore-driver.git;protocol=https;branch=master"
 SRCREV = "${AUTOREV}"
+PV = "3.05"
 
 S = "${WORKDIR}/git/drivers/provencore"
 
