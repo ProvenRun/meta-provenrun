@@ -21,6 +21,8 @@ do_configure:append () {
     mv ${WORKDIR}/git/drivers/provencore/shdev/Makefile.in ${WORKDIR}/git/drivers/provencore/shdev/Makefile
 }
 
+PKGR = "1.pl${@d.getVar('XILINX_VER_MAIN').replace('.', '_')}"
+
 EXTRA_OEMAKE += "KERNELDIR=${STAGING_KERNEL_BUILDDIR} M=${S} -C ${STAGING_KERNEL_BUILDDIR}"
 EXTRA_OEMAKE += "CONFIG_PROVENCORE_REE=m"
 KERNEL_MODULE_AUTOLOAD += "pnc_ree"

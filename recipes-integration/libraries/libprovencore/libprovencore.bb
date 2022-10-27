@@ -30,5 +30,7 @@ do_install () {
     install -m 0644 ${S}/provencore.h ${D}${includedir}
 }
 
+PKGR = "1.pl${@d.getVar('XILINX_VER_MAIN').replace('.', '_')}"
+
 FILES:${PN} += "${includedir}/*"
 INSANE_SKIP:${PN} += "installed-vs-shipped"
